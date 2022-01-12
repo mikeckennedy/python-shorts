@@ -1,4 +1,7 @@
-[
+from collections import Counter
+
+
+votes = [
     'other',
     'Lewis Hamilton',
     'Max Verstappen',
@@ -271,3 +274,13 @@
     'Roman Grosjean',
     'Roman Grosjean',
 ]
+
+
+c = Counter(votes)
+
+for name, count in c.most_common():
+    if name == "other":
+        continue
+
+    percent = int(count / c.total() * 100)
+    print(f'{name}: {percent}%')
