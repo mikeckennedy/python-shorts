@@ -5,9 +5,18 @@ from pathlib import Path
 def main():
     sales: list[AutoCustomer] = load_list()
 
-    by_email: dict[str, AutoCustomer] = {}
-    by_vin: dict[str, AutoCustomer] = {}
-    unique_vins: set[str] = set()
+    # List comprehension
+    # [FINAL_ITEM for ITEM in DATA if TEST]
+
+    # Dictionary comprehension
+    # {KEY:FINAL_ITEM for ITEM in DATA if TEST}
+
+    # Set comprehension
+    # {FINAL_ITEM for ITEM in DATA if TEST}
+
+    by_email: dict[str, AutoCustomer] = {s.email: s for s in sales}
+    by_vin: dict[str, AutoCustomer] = {s.vin: s for s in sales}
+    unique_vins: set[str] = {s.vin for s in sales}
 
     email = input("Do a search by email: ")
     sale = by_email.get(email)
