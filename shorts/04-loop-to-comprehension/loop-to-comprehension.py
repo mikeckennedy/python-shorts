@@ -38,22 +38,17 @@ class AutoCustomer:
         self.price = price
 
 
-def load_list() -> Iterator[AutoCustomer]:
+def load_list() -> list[AutoCustomer]:
     raw_data = get_raw_data()
 
     # *********** for-in loop ***********
-    customers = []
-    for entry in raw_data:
-        c = AutoCustomer(**entry)
-        customers.append(c)
+    # customers = []
+    # for entry in raw_data:
+    #     c = AutoCustomer(**entry)
+    #     customers.append(c)
 
-    # List comprehension
-    # customers = [AutoCustomer(**entry) for entry in raw_data]
-
-    # Generator expression
-    customers = (AutoCustomer(**entry) for entry in raw_data)
-
-    return customers
+    # *********** List comprehension ***********
+    return [AutoCustomer(**entry) for entry in raw_data]
 
 
 def get_raw_data():
