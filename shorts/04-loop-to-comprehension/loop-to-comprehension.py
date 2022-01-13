@@ -5,7 +5,6 @@ from typing import Iterator
 
 def main():
     sales = load_list()
-    #  print(sales)
 
     count = 10
     for idx, s in enumerate(sales, start=1):
@@ -27,7 +26,7 @@ class AutoCustomer:
     price: int
 
     def __init__(self, _id: int, first_name, last_name, email, make, model, year, vin, price):
-        print(f"Creating customer: {first_name} {last_name}")
+        # print(f"Creating customer {_id}: {first_name} {last_name}")
         self.id = _id
         self.first_name = first_name
         self.last_name = last_name
@@ -40,18 +39,13 @@ class AutoCustomer:
 
 
 def load_list() -> Iterator[AutoCustomer]:
-    file = Path(__file__).parent / 'MOCK_DATA.json'
-    with file.open('r') as fin:
-        # Use json-stream package to stream this too.
-        # We're just keeping it simple
-        raw_data = json.load(fin)
+    raw_data = get_raw_data()
 
-    # for-in loop
-
-    # customers = []
-    # for entry in raw_data:
-    #     c = AutoCustomer(**entry)
-    #     customers.append(c)
+    # *********** for-in loop ***********
+    customers = []
+    for entry in raw_data:
+        c = AutoCustomer(**entry)
+        customers.append(c)
 
     # List comprehension
     # customers = [AutoCustomer(**entry) for entry in raw_data]
@@ -60,6 +54,15 @@ def load_list() -> Iterator[AutoCustomer]:
     customers = (AutoCustomer(**entry) for entry in raw_data)
 
     return customers
+
+
+def get_raw_data():
+    file = Path(__file__).parent / 'MOCK_DATA.json'
+    with file.open('r') as fin:
+        # Use json-stream package to stream this too.
+        # We're just keeping it simple
+        raw_data = json.load(fin)
+    return raw_data
 
 
 if __name__ == '__main__':
