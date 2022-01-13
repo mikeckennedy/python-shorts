@@ -45,14 +45,10 @@ def load_list() -> Iterable[AutoCustomer]:
         # We're just keeping it simple
         raw_data = json.load(fin)
 
-    # customers = []
-    # for entry in raw_data:
-    #     c = AutoCustomer(**entry)
-    #     customers.append(c)
-
-    # customers = [AutoCustomer(**entry) for entry in raw_data]
-
-    customers = (AutoCustomer(**entry) for entry in raw_data)
+    customers = []
+    for entry in raw_data:
+        c = AutoCustomer(**entry)
+        customers.append(c)
 
     return customers
 
