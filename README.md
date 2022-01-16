@@ -10,8 +10,8 @@ Learn Python tips, tools, and techniques in around 5 minutes each.
 
 ## Published videos
 
-- Jan 28, 2022 [scheduled] **Combining dictionaries, the Python 3.10 way**
-- Jan 25, 2022 [scheduled] **Beyond the List Comprehension**
-- Jan 22, 2022 [scheduled] **for-in Loops to List Comprehensions**
-- Jan 16, 2022 [scheduled] **Counting the number of times items appear with collections.Counter**
-- Jan 13, 2022 - **[Parsing data with Pydantic](https://youtu.be/aHv7-6WIxNM)**
+- [scheduled Jan 28, 2022] **Combining dictionaries, the Python 3.10 way**
+- [scheduled Jan 25, 2022] **Beyond the List Comprehension**
+- [scheduled Jan 22, 2022] **for-in Loops to List Comprehensions**
+- **[Counting the number of times items appear with collections.Counter](https://youtu.be/0IHAm8cwlbQ)**
+- **[Parsing data with Pydantic](https://youtu.be/aHv7-6WIxNM)**
