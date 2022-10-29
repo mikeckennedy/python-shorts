@@ -134,3 +134,15 @@ dmypy.json
 .idea/vcs.xml
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/inspectionProfiles/Project_Default.xml
+/prompt=./bin/activate
+/prompt=./bin/activate.csh
+/prompt=./bin/activate.fish
+/prompt=./bin/Activate.ps1
+/prompt=./bin/pip
+/prompt=./bin/pip3
+/prompt=./bin/pip3.10
+/prompt=./bin/pip3.11
+/prompt=./bin/python
+/prompt=./bin/python3
+/prompt=./bin/python3.11
+/prompt=./pyvenv.cfg
