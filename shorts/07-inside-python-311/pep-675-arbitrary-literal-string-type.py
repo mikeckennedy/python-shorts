@@ -21,7 +21,7 @@ query_user(conn, "user123 OR 1 = 1")  # Fetch all users (since 1 = 1 is always t
 
 def query_user(connection: Connection, user_id: str) -> User:
     query = "SELECT * FROM data WHERE user_id = ?"  # <-- Safe, literal string.
-    conn.execute(query, (user_id,))  # <-- Safe, database parameter.
+    connection.execute(query, (user_id,))  # <-- Safe, database parameter.
     return User()  # With details from query
 
 

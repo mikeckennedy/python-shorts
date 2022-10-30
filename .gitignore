@@ -146,3 +146,6 @@ dmypy.json
 /prompt=./bin/python3
 /prompt=./bin/python3.11
 /prompt=./pyvenv.cfg
+/.idea/dataSources.xml
+/.idea/sqldialects.xml
+identifier.sqlite
