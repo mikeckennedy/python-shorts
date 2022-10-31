@@ -5,10 +5,12 @@
 # the exception is raised. The added notes appear in the default traceback.
 
 def some_system_func(val):
+    # noinspection PyUnusedLocal
     x = val * 2
     raise ValueError("Cannot convert to text")
 
 
+# noinspection PyUnresolvedReferences
 def our_function(val):
     try:
         results = some_system_func(val)
