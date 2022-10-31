@@ -6,7 +6,6 @@ from typing import Optional
 # What is it?
 creator = 'Professor Falken'
 
-
 name = input("What is your name? ")
 if name == creator:
     print(f"Would you like to play a game {name}?")
@@ -28,8 +27,7 @@ if match and len(match.groups()) >= 2:
 
 # vs.
 
-if (match := r.match(text)) and len(match.groups()) >= 2:
-    groups = match.groups()
+if (match := r.match(text)) and len(groups := match.groups()) >= 2:
     print(f"Resolution: {groups[0]} x {groups[1]}")
 
 
