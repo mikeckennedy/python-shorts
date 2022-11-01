@@ -5,33 +5,35 @@ from typing import Optional
 # PEP 572 – Assignment Expressions (aka walrus operator)
 
 # What is it?
-creator = 'Professor Falken'
+creator = "Professor Falken"
 
-name = input("What is your name? ")
-if name == creator:
-    print(f"Would you like to play a game {name}?")
+# name = input("What is your name? ")
+# if name == creator:
+#     print(f"Greetings {name}, would you like to play a game?")
+#
+#
+# # Using the walrus:
+# if name := input("What is your name? ") == creator:
+#     print(f"Greetings {name}, would you like to play a game?")
 
-# vs. ******************
-
-if name := input('What is your name? '):
-    print(f"Would you like to play a game {name}?")
-
-# Code executes twice:
+# ****************************************************************************
 r = re.compile(pattern=".* ([0-9]+)x([0-9]+) .*")
 text = 'This video has a resolution of 2560x1440 pixels.'
 
-# **** Ex 1 ***********************************************
-match = r.match(text)
-if match and len(match.groups()) >= 2:
-    groups = match.groups()
-    print(f"Resolution: {groups[0]} x {groups[1]}")
 
-# vs.
+# match = r.match(text)
+# if match and len(match.groups()) >= 2:
+#     w = match.groups()[0]
+#     h = match.groups()[1]
+#     print(f'The new resolution is width: {w} x {h}')
+#
+# # Using the walrus:
+#
+# if match := r.match(text) and len(g := match.groups()) >= 2:
+#     print(f'The new resolution is width: {g[0]} x {g[1]}')
 
-if (match := r.match(text)) and len(groups := match.groups()) >= 2:
-    print(f"Resolution: {groups[0]} x {groups[1]}")
 
-
+# ****************************************************************************
 class User:
     id_: int
     created_date: datetime.datetime
@@ -61,25 +63,25 @@ user_ids = [
     1, 2, 7, 11, ]
 cutoff_date = datetime.datetime.now() - datetime.timedelta(days=7)
 
-# **** Ex 2 ***********************************************
 active_users = [
-    get_user_by_id(user_id)
-    for user_id in user_ids
-    if get_user_by_id(user_id) and get_user_by_id(user_id).created_date > cutoff_date
+    get_user_by_id(uid)
+    for uid in user_ids
+    if get_user_by_id(uid) and get_user_by_id(uid).created_date > cutoff_date
 ]
 
-# vs.
+# print(active_users)
 
-active_users2 = [
+# Using the walrus:
+active_users = [
     user
-    for user_id in user_ids
-    if (user := get_user_by_id(user_id)) and user.created_date > cutoff_date
+    for uid in user_ids
+    if (user := get_user_by_id(uid)) and user.created_date > cutoff_date
 ]
 
-x = 1
+# print(active_users)
 
-# **** Ex 3 ***********************************************
-# The while True loop
+
+# ****************************************************************************
 
 # prompt_text = "Which action? [a], [b], or [c] (ENTER to exit)? "
 # command = input(prompt_text)
@@ -90,17 +92,15 @@ x = 1
 #
 # print("Bye now!")
 #
-# # vs.
-#
-# prompt_text = "Which action? [a], [b], or [c] (ENTER to exit)? "
+# # Using the walrus:
 #
 #
-# while command := input(prompt_text) != '':
+# while (command := input(prompt_text)).strip() != '':
 #     print(f"You chose to perform action '{command}'!")
 #
 # print("Bye now!")
 
-# **** Ex 4 ***********************************************
+# ****************************************************************************
 # What value matched any() or the all()?
 values = [55, 7, 22, 200, 15, -5, 75, -20, -10]
 if any(v < 0 for v in values):
@@ -113,14 +113,13 @@ if all(v < 0 for v in values):
 else:
     print("At least one non-negative number exists.")
 
-# vs. *******************
-
+# Using the walrus:
 if any((first := v) < 0 for v in values):
-    print(f"We have negatives, the first one is {first}")
+    print(f"We have negatives, the first is {first}!")
 else:
     print("Only non-negative numbers for us.")
 
-if all((counterpoint := v) < 100 for v in values):
+if all((counterpoint := v) < 0 for v in values):
     print("ALL numbers are negatives!")
 else:
-    print(f"At least one non-negative number exists: {counterpoint}")
+    print(f"At least one non-negative number exists, for example: {counterpoint}")
