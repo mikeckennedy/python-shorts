@@ -1,7 +1,8 @@
-# PEP 572 – Assignment Expressions (aka walrus operator)
 import datetime
 import re
 from typing import Optional
+
+# PEP 572 – Assignment Expressions (aka walrus operator)
 
 # What is it?
 creator = 'Professor Falken'
