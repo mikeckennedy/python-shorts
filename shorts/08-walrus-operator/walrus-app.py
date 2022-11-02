@@ -7,30 +7,32 @@ from typing import Optional
 # What is it?
 creator = "Professor Falken"
 
-# name = input("What is your name? ")
-# if name == creator:
-#     print(f"Greetings {name}, would you like to play a game?")
-#
-#
-# # Using the walrus:
-# if name := input("What is your name? ") == creator:
-#     print(f"Greetings {name}, would you like to play a game?")
+name = input("What is your name? ")
+if name == creator:
+    print(f"Greetings {name}, would you like to play a game?")
+
+# Using the walrus:
+if name := input("What is your name? ") == creator:
+    print(f"Greetings {name}, would you like to play a game?")
 
 # ****************************************************************************
 r = re.compile(pattern=".* ([0-9]+)x([0-9]+) .*")
 text = 'This video has a resolution of 2560x1440 pixels.'
 
+match = r.match(text)
+if match and len(match.groups()) >= 2:
+    w = match.groups()[0]
+    h = match.groups()[1]
+    print(f'The new resolution is width: {w} x {h}')
 
-# match = r.match(text)
-# if match and len(match.groups()) >= 2:
-#     w = match.groups()[0]
-#     h = match.groups()[1]
-#     print(f'The new resolution is width: {w} x {h}')
-#
-# # Using the walrus:
-#
-# if match := r.match(text) and len(g := match.groups()) >= 2:
-#     print(f'The new resolution is width: {g[0]} x {g[1]}')
+# Using the walrus:
+
+
+if match := r.match(text) and len(g := match.groups()) >= 2:
+    print(f'The new resolution is width: {g[0]} x {g[1]}')
+
+
+
 
 
 # ****************************************************************************
@@ -69,7 +71,7 @@ active_users = [
     if get_user_by_id(uid) and get_user_by_id(uid).created_date > cutoff_date
 ]
 
-# print(active_users)
+print(active_users)
 
 # Using the walrus:
 active_users = [
@@ -78,27 +80,26 @@ active_users = [
     if (user := get_user_by_id(uid)) and user.created_date > cutoff_date
 ]
 
-# print(active_users)
-
+print(active_users)
 
 # ****************************************************************************
 
-# prompt_text = "Which action? [a], [b], or [c] (ENTER to exit)? "
-# command = input(prompt_text)
-#
-# while command.strip() != '':
-#     print(f"You chose to perform action '{command}'!")
-#     command = input(prompt_text)
-#
-# print("Bye now!")
-#
-# # Using the walrus:
-#
-#
-# while (command := input(prompt_text)).strip() != '':
-#     print(f"You chose to perform action '{command}'!")
-#
-# print("Bye now!")
+prompt_text = "Which action? [a], [b], or [c] (ENTER to exit)? "
+command = input(prompt_text)
+
+while command.strip() != '':
+    print(f"You chose to perform action '{command}'!")
+    command = input(prompt_text)
+
+print("Bye now!")
+
+# Using the walrus:
+
+
+while (command := input(prompt_text)).strip() != '':
+    print(f"You chose to perform action '{command}'!")
+
+print("Bye now!")
 
 # ****************************************************************************
 # What value matched any() or the all()?
