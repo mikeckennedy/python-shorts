@@ -12,7 +12,8 @@ if name == creator:
     print(f"Greetings {name}, would you like to play a game?")
 
 # Using the walrus:
-if name := input("What is your name? ") == creator:
+# Mistake in the video: Forgot to add the () here and name = True rather than input.
+if (name := input("What is your name? ")) == creator:
     print(f"Greetings {name}, would you like to play a game?")
 
 # ****************************************************************************
