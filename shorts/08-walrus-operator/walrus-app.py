@@ -33,9 +33,6 @@ if match := r.match(text) and len(g := match.groups()) >= 2:
     print(f'The new resolution is width: {g[0]} x {g[1]}')
 
 
-
-
-
 # ****************************************************************************
 class User:
     id_: int
