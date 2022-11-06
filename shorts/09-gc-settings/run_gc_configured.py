@@ -1,4 +1,5 @@
 import datetime
+import gc
 import os
 import random
 
@@ -12,8 +13,13 @@ def main(change_gc: bool):
 
     m0 = report_process_mem()
 
+    # gc.set_debug(True)
+    gc.collect(2)
+    gc.freeze()
+
     if change_gc:
-        ...  # Hmm, how?
+        allocs, g1, g2 = gc.get_threshold()
+        gc.set_threshold(100_000, g1*5, g2*10)
 
     lists_of_items = []
     for items in range(0, times):
