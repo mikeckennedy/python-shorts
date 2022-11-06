@@ -1,5 +1,4 @@
 import datetime
-import gc
 import os
 import random
 
@@ -11,15 +10,10 @@ def main(change_gc: bool):
     count = 1000
     times = 100
 
-    # gc.set_debug(True)
-    gc.freeze()
-
     m0 = report_process_mem()
 
     if change_gc:
-        allocs, gen1, gen2 = gc.get_threshold()
-        allocs = 50_000  # Start the GC sequence every 50K not 700 class allocations.
-        gc.set_threshold(allocs, gen1 * 5, gen2 * 10)
+        ...  # Hmm, how?
 
     lists_of_items = []
     for items in range(0, times):
@@ -56,12 +50,14 @@ def create_some_items(count: int) -> list[DbItem]:
 
 
 if __name__ == '__main__':
-    random.seed(12345)
-    create_some_items(1)
+    random.seed(12345)    # Make it repeatable
+    create_some_items(1)  # Warm up the code so we don't time startup
 
     change = input("Use modified GC settings? [y]/n ") in {'', 'y'}
 
     t0 = datetime.datetime.now()
+
+    # Let's go!
     mem_delta = main(change)
 
     dt = datetime.datetime.now() - t0
