@@ -14,8 +14,7 @@ def main(change_gc: bool):
     m0 = report_process_mem()
 
     # gc.set_debug(True)
-    gc.collect(2)
-    gc.freeze()
+    # Moved gc.freeze() to start up code. Didn't belong here.
 
     if change_gc:
         allocs, g1, g2 = gc.get_threshold()
@@ -60,6 +59,11 @@ if __name__ == '__main__':
     create_some_items(1)  # Warm up the code so we don't time startup
 
     change = input("Use modified GC settings? [y]/n ") in {'', 'y'}
+
+    # Moved this to the start up of the app (from main() in video).
+    # We shouldn't be timing long term speed with this included.
+    gc.collect(2)
+    gc.freeze()
 
     t0 = datetime.datetime.now()
 
