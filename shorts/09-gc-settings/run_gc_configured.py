@@ -13,7 +13,7 @@ def main(change_gc: bool):
 
     m0 = report_process_mem()
 
-    # gc.set_debug(True)
+    # gc.set_debug(gc.DEBUG_STATS)
     # Moved gc.freeze() to start up code. Didn't belong here.
 
     if change_gc:
